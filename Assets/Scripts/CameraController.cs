@@ -16,7 +16,7 @@ public class CameraController : MonoBehaviour
     private void LateUpdate()
     {
         Vector3 _playerForward = (_playerRb.linearVelocity + _player.transform.forward).normalized;
-        transform.position = Vector3.Lerp(transform.position, _player.position + _player.transform.TransformVector(_offset) + _playerForward * (-5f), _speed * Time.deltaTime);
+        transform.position = Vector3.Lerp(transform.position, _player.position + _player.transform.TransformVector(_offset) + _playerForward * (-1f), _speed * Time.deltaTime);
         transform.LookAt(_player);
     }
 }

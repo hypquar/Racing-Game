@@ -8,11 +8,15 @@ public class Transmission : MonoBehaviour
     [SerializeField] private float[] _gearRatios;
     [SerializeField] private float _differentialRatio = 0.5f;
     [SerializeField] private float ratio;
+    [SerializeField] private Engine _engine;
+    [SerializeField] private bool _isAutomatic;
 
-    private float _wheelRpm;
+    [SerializeField] private float _wheelRpm;
     private int _currentGear = 2;
     private List<AxisInfo> _axisInfos;
     private Car _inputActions;
+    private Rigidbody _rb;
+    private bool _isReversing = false;
 
     public float WheelRpm
     {
@@ -69,6 +73,7 @@ public class Transmission : MonoBehaviour
     private void Awake()
     {
         _inputActions = new Car();
+        _rb = GetComponent<Rigidbody>();
     }
 
     private void OnEnable()
@@ -83,6 +88,10 @@ public class Transmission : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (_isAutomatic)
+        {
+            ManageAutomaticTransmission();
+        }
         CalculateWheelRpm();
     }
 
@@ -108,6 +117,7 @@ public class Transmission : MonoBehaviour
             if (_currentGear < _gearRatios.Length - 1)
             {
                 _currentGear++;
+                _engine.Rpm -= 4000f;
             }
 
             Debug.Log(_currentGear);
@@ -121,9 +131,43 @@ public class Transmission : MonoBehaviour
             if (_currentGear > 0)
             {
                 _currentGear--;
+                _engine.Rpm += 4000f;
             }
 
             Debug.Log(_currentGear);
+        }
+    }
+
+    public void ManageAutomaticTransmission()
+    {
+        if (_engine.Rpm >= 7000f)
+        {
+            if (_currentGear < _gearRatios.Length - 1 && _currentGear + 1 != 1)
+            {
+                _currentGear++;
+                _engine.Rpm -= 4000f;
+            }
+        }
+        if (_engine.Rpm < 3000f)
+        {
+            if (_currentGear > 2)
+            {
+                _currentGear--;
+                _engine.Rpm += 4000f;
+            }
+        }
+        if (_rb.linearVelocity.magnitude < 0.1f || _rb.linearVelocity.magnitude == 0)
+        {
+            if (Input.GetKeyDown(KeyCode.W))
+            {
+                _currentGear = 2;
+                _isReversing = false;
+            }
+            if (Input.GetKeyDown(KeyCode.S))
+            {
+                _currentGear = 0;
+                _isReversing = true;
+            }
         }
     }
 }

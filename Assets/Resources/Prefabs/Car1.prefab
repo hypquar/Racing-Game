@@ -423,9 +423,9 @@ WheelCollider:
   m_Center: {x: 0, y: 0, z: 0}
   m_Radius: 0.5
   m_SuspensionSpring:
-    spring: 20000
-    damper: 2000
-    targetPosition: 0.3
+    spring: 45000
+    damper: 4000
+    targetPosition: 0.2
   m_SuspensionDistance: 0.24
   m_ForceAppPointDistance: 0
   m_Mass: 20
@@ -495,9 +495,9 @@ WheelCollider:
   m_Center: {x: 0, y: 0, z: 0}
   m_Radius: 0.5
   m_SuspensionSpring:
-    spring: 20000
-    damper: 2000
-    targetPosition: 0.3
+    spring: 45000
+    damper: 4000
+    targetPosition: 0.2
   m_SuspensionDistance: 0.24
   m_ForceAppPointDistance: 0
   m_Mass: 20
@@ -733,10 +733,10 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7115425689517142545}
   serializedVersion: 4
-  m_Mass: 1000
+  m_Mass: 1200
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_CenterOfMass: {x: 0, y: -0.3, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
   m_IncludeLayers:
@@ -745,7 +745,7 @@ Rigidbody:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_ImplicitCom: 1
+  m_ImplicitCom: 0
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -1190,9 +1190,9 @@ WheelCollider:
   m_Center: {x: 0, y: 0, z: 0}
   m_Radius: 0.5
   m_SuspensionSpring:
-    spring: 20000
-    damper: 2000
-    targetPosition: 0.3
+    spring: 45000
+    damper: 4000
+    targetPosition: 0.2
   m_SuspensionDistance: 0.24
   m_ForceAppPointDistance: 0
   m_Mass: 20
@@ -1204,7 +1204,7 @@ WheelCollider:
     m_AsymptoteValue: 0.5
     m_Stiffness: 1
   m_SidewaysFriction:
-    m_ExtremumSlip: 0.2
+    m_ExtremumSlip: 0.6
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.5
     m_AsymptoteValue: 0.75
@@ -1294,9 +1294,9 @@ WheelCollider:
   m_Center: {x: 0, y: 0, z: 0}
   m_Radius: 0.5
   m_SuspensionSpring:
-    spring: 20000
-    damper: 2000
-    targetPosition: 0.3
+    spring: 45000
+    damper: 4000
+    targetPosition: 0.2
   m_SuspensionDistance: 0.24
   m_ForceAppPointDistance: 0
   m_Mass: 20
@@ -1308,7 +1308,7 @@ WheelCollider:
     m_AsymptoteValue: 0.5
     m_Stiffness: 1
   m_SidewaysFriction:
-    m_ExtremumSlip: 0.2
+    m_ExtremumSlip: 0.6
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.5
     m_AsymptoteValue: 0.75

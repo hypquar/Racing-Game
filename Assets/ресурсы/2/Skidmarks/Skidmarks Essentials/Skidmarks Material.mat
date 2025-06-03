@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Skidmarks Material
-  m_Shader: {fileID: 4800000, guid: 1d5e5936aac2ee545ade1ec1cda3262f, type: 3}
+  m_Shader: {fileID: 4800000, guid: 02e1cbf1d7a165245a26e6e59e370f9c, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []

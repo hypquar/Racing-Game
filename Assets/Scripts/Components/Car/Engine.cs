@@ -28,6 +28,21 @@ public class Engine : MonoBehaviour
         {
             return _rpm;
         }
+        set
+        {
+            if (value > _maxRpm)
+            {
+                _rpm = _maxRpm;
+            }
+            else if (value < _idleRpm)
+            {
+                _rpm = _idleRpm;
+            }
+            else
+            {
+                _rpm = value;
+            }
+        }
     }
 
     public float Torque
@@ -48,6 +63,22 @@ public class Engine : MonoBehaviour
         set
         {
             _enginePower = value;
+        }
+    }
+
+    public float MinRpm
+    {
+        get
+        {
+            return _idleRpm;
+        }
+    }
+
+    public float MaxRpm
+    {
+        get
+        {
+            return _maxRpm;
         }
     }
 
@@ -73,11 +104,11 @@ public class Engine : MonoBehaviour
     {
         if (_transmission.CurrentGear == 1)
         {
-            _rpm = Mathf.Lerp(_rpm, Mathf.Max(_idleRpm, _maxRpm * _controller.GasInput), Time.deltaTime);
+            Rpm = Mathf.Lerp(_rpm, Mathf.Max(_idleRpm, _maxRpm * _controller.GasInput), Time.deltaTime);
         }
         else
         {
-            _rpm = Mathf.Lerp(_rpm, Mathf.Max(_idleRpm, _transmission.WheelRpm), Time.deltaTime); 
+            Rpm = Mathf.Lerp(_rpm, Mathf.Max(_idleRpm, _transmission.WheelRpm), Time.deltaTime); 
         }
     }
 }
