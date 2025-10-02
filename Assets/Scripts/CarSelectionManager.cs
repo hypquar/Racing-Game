@@ -1,5 +1,6 @@
+using System;
 using System.Collections.Generic;
-using Unity.VisualScripting;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -12,6 +13,7 @@ public class CarSelectionManager : MonoBehaviour
 
     [SerializeField] private GameObject _currentCar;
     [SerializeField] private Transform _spawn;
+    [SerializeField] private TextMeshProUGUI _priceDisplay;
 
     [SerializeField] private StatDisplay _speedDisplay;
     [SerializeField] private StatDisplay _brakeDisplay;
@@ -57,6 +59,12 @@ public class CarSelectionManager : MonoBehaviour
     private void Start()
     {
         SwitchCar(_carDatas[CurrentCarIndex].PrefabPath);
+        OnNotBoughtCarInspection.AddListener(DisplayPrice);
+    }
+
+    private void DisplayPrice()
+    {
+        _priceDisplay.text = "Price: " + _currentCarData.Price.ToString();
     }
 
     public void ChangeSelectedCar(int increment)
